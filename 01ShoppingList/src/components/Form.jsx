@@ -17,7 +17,6 @@ function Form({handleAddShoppingItem})
                 quantity: quantity, 
                 packed: false
             }
-            console.log(newShopList);
             handleAddShoppingItem(newShopList);
             setProduct("");
             setQuantity(1);
