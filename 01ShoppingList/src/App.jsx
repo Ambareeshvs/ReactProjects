@@ -21,7 +21,7 @@ function App()
     <>
       <Header />
       <Main items = {items} handleAddShoppingItem = {handleAddShoppingItem} handleDltShoppingItem = {handleDltShoppingItem} handleUpdateShoppingList = {handleUpdateShoppingList}/>
-      <Footer />
+      <Footer items = {items}/>
     </>
   )
 }
