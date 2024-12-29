@@ -2,7 +2,7 @@ import List from "./List";
 import Form from "./Form";
 import PropTypes from 'prop-types';
 
-function Main({items, handleAddShoppingItem, handleDltShoppingItem})
+function Main({items, handleAddShoppingItem, handleDltShoppingItem, handleUpdateShoppingList})
 {
     return(
         <div className="flex flex-col min-h-screen">
@@ -23,7 +23,7 @@ function Main({items, handleAddShoppingItem, handleDltShoppingItem})
                             </thead>
                             <tbody>
                                 {
-                                    items.map((items) => (<List item = {items} key = {items.id} handleDltShoppingItem = {handleDltShoppingItem}/>))
+                                    items.map((items) => (<List item = {items} key = {items.id} handleDltShoppingItem = {handleDltShoppingItem} handleUpdateShoppingList = {handleUpdateShoppingList}/>))
                                 }
                             </tbody>
                         </table>

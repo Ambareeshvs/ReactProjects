@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function List({item, handleDltShoppingItem})
+function List({item, handleDltShoppingItem, handleUpdateShoppingList})
 {
     const { id, product, quantity, packed } = item;
 
@@ -17,7 +17,7 @@ function List({item, handleDltShoppingItem})
                     </div>
                     :
                     <div className="flex gap-1">
-                        <button className="rounded-md px-2 py-1 text-base font-medium text-green-300 bg-green-700 hover:text-white">Done</button>
+                        <button className="rounded-md px-2 py-1 text-base font-medium text-green-300 bg-green-700 hover:text-white" onClick={() => handleUpdateShoppingList(item.id)}>Done</button>
                         <button className="rounded-md px-2 py-1 text-base font-medium text-red-300 bg-red-700 hover:text-white" onClick={() => handleDltShoppingItem(item.id)}>Clear</button>
                     </div>
                 }

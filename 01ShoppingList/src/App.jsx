@@ -13,11 +13,14 @@ function App()
   const handleDltShoppingItem = (id) => {
       setItemToList((items) => items.filter((item) => item.id !== id));
   };
+  const handleUpdateShoppingList = (id) => {
+      setItemToList((items) => items.map((item) => item.id === id ? {...item, packed: !item.packed} : item))
+  };
 
   return (
     <>
       <Header />
-      <Main items = {items} handleAddShoppingItem = {handleAddShoppingItem} handleDltShoppingItem = {handleDltShoppingItem}/>
+      <Main items = {items} handleAddShoppingItem = {handleAddShoppingItem} handleDltShoppingItem = {handleDltShoppingItem} handleUpdateShoppingList = {handleUpdateShoppingList}/>
       <Footer />
     </>
   )
