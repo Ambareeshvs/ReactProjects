@@ -1,9 +1,23 @@
 import List from "./List";
 import Form from "./Form";
 import PropTypes from 'prop-types';
+import { useState } from "react";
 
 function Main({items, handleAddShoppingItem, handleDltShoppingItem, handleUpdateShoppingList})
 {
+    const [sortItemBy, setSortItemBy] = useState("input");
+
+    let sortedItems;
+    if(sortItemBy === "input")
+    {
+        sortedItems = items;
+    }
+
+    if(sortItemBy === "packed")
+    {
+        sortedItems = items.slice().sort((a,b) => Number(a.packed) - Number(b.packed));
+    }
+
     return(
         <div className="flex flex-col min-h-screen">
             <div className="flex-grow">
@@ -23,16 +37,20 @@ function Main({items, handleAddShoppingItem, handleDltShoppingItem, handleUpdate
                             </thead>
                             <tbody>
                                 {
-                                    items.map((items) => (<List item = {items} key = {items.id} handleDltShoppingItem = {handleDltShoppingItem} handleUpdateShoppingList = {handleUpdateShoppingList}/>))
+                                    sortedItems.map((items) => (<List item = {items} key = {items.id} handleDltShoppingItem = {handleDltShoppingItem} handleUpdateShoppingList = {handleUpdateShoppingList}/>))
                                 }
                             </tbody>
                         </table>
                     </div>
+                    <div className="mt-4">
+                        <select className="p-1 ring-1 mr-1" value={sortItemBy} onChange={(e) => {setSortItemBy(e.target.value)}}>
+                            <option value="input"> Sort By Input </option>
+                            <option value="packed"> Sort By Packed </option>
+                        </select>
+                    </div>
                 </div>
-                
             </div>
         </div>
-        
     )
 }
 
